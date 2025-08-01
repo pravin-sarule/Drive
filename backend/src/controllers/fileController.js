@@ -645,23 +645,7 @@ const uploadToFolder = async (req, res) => {
 
   res.status(201).json({ message: 'Files uploaded successfully', files: uploaded });
 };
-// // List folder contents
-// const listFolderContents = async (req, res) => {
-//   const userId = req.user.id;
-//   const folderPath = req.query.path || '';
 
-//   const [files] = await bucket.getFiles({ prefix: `${userId}/${folderPath}`, delimiter: '/' });
-//   const objects = files.map(f => ({
-//     name: f.name.replace(`${userId}/${folderPath}`, ''),
-//     url: `https://storage.googleapis.com/${bucket.name}/${f.name}`,
-//     size: f.metadata.size,
-//     type: f.metadata.contentType,
-//     path: f.name,
-//     isFolder: f.name.endsWith('/'),
-//   }));
-
-//   res.json({ folderPath, items: objects });
-// };
 const listFolderContents = async (req, res) => {
   try {
     const userId = req.user.id;
