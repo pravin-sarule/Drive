@@ -18,14 +18,34 @@
 
 // module.exports = { bucket, admin };
 
-const { Storage } = require('@google-cloud/storage');
+// const { Storage } = require('@google-cloud/storage');
 
-const keyBuffer = Buffer.from(process.env.GCS_KEY_BASE64, 'base64');
-const gcsKey = JSON.parse(keyBuffer.toString());
+// const keyBuffer = Buffer.from(process.env.GCS_KEY_BASE64, 'base64');
+// const gcsKey = JSON.parse(keyBuffer.toString());
+
+// const storage = new Storage({
+//   projectId: gcsKey.project_id,
+//   credentials: gcsKey,
+// });
+
+// module.exports = storage;
+const { Storage } = require('@google-cloud/storage');
+const fs = require('fs');
+
+let credentials;
+
+if (process.env.GCS_KEY_BASE64) {
+  const jsonString = Buffer.from(process.env.GCS_KEY_BASE64, 'base64').toString('utf-8');
+  credentials = JSON.parse(jsonString);
+} else {
+  // fallback for local dev
+  credentials = require('../../gcs-key.json');
+}
 
 const storage = new Storage({
-  projectId: gcsKey.project_id,
-  credentials: gcsKey,
+  credentials,
 });
 
-module.exports = storage;
+const bucket = storage.bucket(process.env.GCS_BUCKET_NAME);
+
+module.exports = { storage, bucket };
