@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors({ origin: 'https://drive-managment.netlify.app', credentials: true }));
+app.use(cors({ origin: 'https://nexintelai.netlify.app', credentials: true }));
 app.use(express.json());
 
 // Routes
@@ -23,3 +23,4 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
