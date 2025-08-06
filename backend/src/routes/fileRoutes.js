@@ -44,7 +44,7 @@ const router = express.Router();
 const upload = multer({ storage: multer.memoryStorage() });
 
 // File upload routes
-router.post('/upload', authenticateToken, upload.single('files'), uploadFile);
+router.post('/upload', authenticateToken, upload.any(), uploadFile);
 router.post('/upload-folder', authenticateToken, upload.array('files'), uploadFolder);
 router.post('/upload-to-folder', authenticateToken, upload.array('files'), uploadToFolder);
 
