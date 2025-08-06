@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors({ origin: 'http://localhost:3001', credentials: true }));
+app.use(cors({ origin: 'https://nexintelai.netlify.app', credentials: true }));
 app.use(express.json());
 
 // Routes
@@ -33,4 +33,5 @@ process.on('unhandledRejection', (reason, promise) => {
   // Optionally, exit the process if the error is critical
   // process.exit(1);
 });
+
 
