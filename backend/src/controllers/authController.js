@@ -182,7 +182,6 @@
 // };
 
 // module.exports = { register, login };
-
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const Session = require('../models/Session');
@@ -282,9 +281,3 @@ const login = async (req, res) => {
 };
 
 module.exports = { register, login };
-
-
-
-
-
-
