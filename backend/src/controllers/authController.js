@@ -49,7 +49,7 @@
 // module.exports = { register, login };
 
 const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+const User = require('./src/models/User');
 const Session = require('../models/Session');
 const { generateToken } = require('../utils/jwt');
 
@@ -182,6 +182,7 @@ module.exports = { register, login };
 // };
 
 // module.exports = { register, login };
+
 
 
 
